@@ -9,25 +9,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #f8f9fc;
+            --bg-primary: #faf8ff;
             --bg-secondary: #ffffff;
-            --bg-accent: #eef2f7;
-            --text-primary: #4a5568;
-            --text-secondary: #718096;
-            --text-muted: #a0aec0;
-            --lavender: #c4b5e0;
-            --lavender-soft: #e8e0f0;
-            --sage: #a8c5b5;
-            --sage-soft: #d4e5dc;
-            --sky: #a5c4d4;
-            --sky-soft: #d5e5ed;
-            --peach: #e8cfc4;
-            --peach-soft: #f5ebe6;
-            --rose: #deb5b5;
-            --shadow-soft: 0 2px 20px rgba(74, 85, 104, 0.08);
-            --shadow-medium: 0 4px 30px rgba(74, 85, 104, 0.12);
-            --radius: 16px;
-            --radius-sm: 10px;
+            --bg-accent: #f3f0fa;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-muted: #8b93a7;
+            --lavender: #9b7fd4;
+            --lavender-soft: #e6dff5;
+            --lavender-rich: #7c5bbf;
+            --sage: #5fa886;
+            --sage-soft: #d8f0e3;
+            --sage-rich: #3d8b65;
+            --sky: #5da4c7;
+            --sky-soft: #dbeef7;
+            --sky-rich: #3a89b5;
+            --peach: #e89b7b;
+            --peach-soft: #fde8df;
+            --coral: #e07b7b;
+            --rose: #d67a8f;
+            --rose-soft: #fae0e6;
+            --gold: #d4a85a;
+            --gold-soft: #faf3e0;
+            --teal: #4ab3a8;
+            --teal-soft: #d5f2ef;
+            --shadow-soft: 0 2px 20px rgba(100, 80, 140, 0.1);
+            --shadow-medium: 0 4px 30px rgba(100, 80, 140, 0.15);
+            --shadow-glow: 0 0 40px rgba(155, 127, 212, 0.3);
+            --radius: 20px;
+            --radius-sm: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -67,17 +77,21 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             font-weight: 500;
-            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--lavender-rich) 0%, var(--teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 0.5rem;
             letter-spacing: 0.02em;
         }
 
         .logo-subtitle {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--lavender);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 2.5rem;
+            font-weight: 600;
         }
 
         .nav-menu {
@@ -109,8 +123,10 @@
         }
 
         .nav-link.active {
-            background: var(--lavender-soft);
-            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--lavender-soft) 0%, #f0e6ff 100%);
+            color: var(--lavender-rich);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(155, 127, 212, 0.15);
         }
 
         .nav-icon {
@@ -228,14 +244,15 @@
         }
 
         .btn-primary {
-            background: var(--lavender);
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--lavender-rich) 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(155, 127, 212, 0.4);
         }
 
         .btn-primary:hover {
-            background: #b3a3d1;
+            background: linear-gradient(135deg, var(--lavender-rich) 0%, #6a4aad 100%);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: 0 6px 25px rgba(124, 91, 191, 0.5);
         }
 
         .btn-secondary {
@@ -292,31 +309,59 @@
 
         .gratitude-entry {
             padding: 1.25rem;
-            background: var(--bg-accent);
+            background: linear-gradient(135deg, rgba(216, 240, 227, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
             border-radius: var(--radius-sm);
             margin-bottom: 1rem;
             border-left: 4px solid var(--sage);
+            box-shadow: 0 2px 8px rgba(95, 168, 134, 0.1);
+            transition: var(--transition);
+        }
+
+        .gratitude-entry:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 15px rgba(95, 168, 134, 0.15);
         }
 
         .gratitude-entry-date {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--sage-rich);
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            font-weight: 600;
         }
 
         .gratitude-entry-text {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             line-height: 1.7;
         }
 
         .gratitude-entry:nth-child(3n+2) {
             border-left-color: var(--lavender);
+            background: linear-gradient(135deg, rgba(230, 223, 245, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+            box-shadow: 0 2px 8px rgba(155, 127, 212, 0.1);
+        }
+
+        .gratitude-entry:nth-child(3n+2):hover {
+            box-shadow: 0 4px 15px rgba(155, 127, 212, 0.15);
+        }
+
+        .gratitude-entry:nth-child(3n+2) .gratitude-entry-date {
+            color: var(--lavender-rich);
         }
 
         .gratitude-entry:nth-child(3n) {
             border-left-color: var(--sky);
+            background: linear-gradient(135deg, rgba(219, 238, 247, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+            box-shadow: 0 2px 8px rgba(93, 164, 199, 0.1);
+        }
+
+        .gratitude-entry:nth-child(3n):hover {
+            box-shadow: 0 4px 15px rgba(93, 164, 199, 0.15);
+        }
+
+        .gratitude-entry:nth-child(3n) .gratitude-entry-date {
+            color: var(--sky-rich);
         }
 
         /* ==================== MOOD TRACKER ==================== */
@@ -329,8 +374,8 @@
         }
 
         .mood-btn {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             border: 3px solid transparent;
             background: var(--bg-accent);
@@ -340,22 +385,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .mood-btn:hover {
             transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
 
         .mood-btn.selected {
             border-color: var(--lavender);
-            box-shadow: 0 0 20px rgba(196, 181, 224, 0.5);
+            box-shadow: 0 0 25px rgba(155, 127, 212, 0.5), 0 4px 15px rgba(0, 0, 0, 0.1);
+            transform: scale(1.1);
         }
 
-        .mood-btn[data-mood="amazing"] { background: var(--sage-soft); }
-        .mood-btn[data-mood="good"] { background: var(--sky-soft); }
-        .mood-btn[data-mood="okay"] { background: var(--peach-soft); }
-        .mood-btn[data-mood="low"] { background: var(--lavender-soft); }
-        .mood-btn[data-mood="rough"] { background: #f0e5e5; }
+        .mood-btn[data-mood="amazing"] { 
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+        }
+        .mood-btn[data-mood="good"] { 
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        .mood-btn[data-mood="okay"] { 
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        .mood-btn[data-mood="low"] { 
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+        }
+        .mood-btn[data-mood="rough"] { 
+            background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);
+        }
 
         .mood-calendar {
             display: grid;
@@ -380,26 +438,36 @@
             align-items: center;
             justify-content: center;
             font-size: 0.8rem;
-            background: var(--bg-accent);
+            background: linear-gradient(135deg, #fafbff 0%, #f5f3fa 100%);
             position: relative;
+            transition: var(--transition);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .mood-day:not(.empty):hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(155, 127, 212, 0.15);
         }
 
         .mood-day.empty {
             background: transparent;
+            box-shadow: none;
         }
 
         .mood-day.today {
-            box-shadow: inset 0 0 0 2px var(--lavender);
+            box-shadow: inset 0 0 0 2px var(--lavender), 0 4px 15px rgba(155, 127, 212, 0.2);
+            background: linear-gradient(135deg, var(--lavender-soft) 0%, #fff 100%);
         }
 
         .mood-day-number {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-bottom: 0.25rem;
+            font-weight: 500;
         }
 
         .mood-day-emoji {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         .mood-month-nav {
@@ -418,6 +486,8 @@
         .affirmation-container {
             text-align: center;
             padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(230, 223, 245, 0.3) 0%, rgba(253, 232, 223, 0.3) 50%, rgba(216, 240, 227, 0.3) 100%);
+            border-radius: var(--radius);
         }
 
         .affirmation-text {
@@ -425,17 +495,21 @@
             font-size: 2rem;
             font-style: italic;
             color: var(--text-primary);
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 2rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            background: linear-gradient(135deg, var(--lavender-rich) 0%, var(--rose) 50%, var(--coral) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .affirmation-decoration {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            opacity: 0.6;
+            filter: drop-shadow(0 4px 8px rgba(214, 122, 143, 0.3));
         }
 
         /* ==================== TINY WINS ==================== */
@@ -459,8 +533,8 @@
         }
 
         .win-checkbox {
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             border: 2px solid var(--sage);
             cursor: pointer;
@@ -469,11 +543,18 @@
             justify-content: center;
             transition: var(--transition);
             flex-shrink: 0;
+            background: white;
+        }
+
+        .win-checkbox:hover {
+            border-color: var(--sage-rich);
+            box-shadow: 0 0 12px rgba(95, 168, 134, 0.3);
         }
 
         .win-checkbox.checked {
-            background: var(--sage);
-            border-color: var(--sage);
+            background: linear-gradient(135deg, var(--sage) 0%, var(--teal) 100%);
+            border-color: var(--sage-rich);
+            box-shadow: 0 2px 10px rgba(95, 168, 134, 0.4);
         }
 
         .win-checkbox.checked::after {
@@ -565,11 +646,25 @@
         }
 
         .history-win-tag {
-            padding: 0.25rem 0.75rem;
-            background: var(--sage-soft);
+            padding: 0.35rem 0.875rem;
+            background: linear-gradient(135deg, var(--sage-soft) 0%, var(--teal-soft) 100%);
             border-radius: 20px;
             font-size: 0.8rem;
-            color: var(--text-secondary);
+            color: var(--sage-rich);
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(95, 168, 134, 0.15);
+        }
+
+        .history-win-tag:nth-child(3n+2) {
+            background: linear-gradient(135deg, var(--lavender-soft) 0%, var(--rose-soft) 100%);
+            color: var(--lavender-rich);
+            box-shadow: 0 2px 6px rgba(155, 127, 212, 0.15);
+        }
+
+        .history-win-tag:nth-child(3n) {
+            background: linear-gradient(135deg, var(--sky-soft) 0%, var(--teal-soft) 100%);
+            color: var(--sky-rich);
+            box-shadow: 0 2px 6px rgba(93, 164, 199, 0.15);
         }
 
         /* ==================== CALM SPACE ==================== */
@@ -584,18 +679,39 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, 
-                var(--lavender-soft) 0%, 
-                var(--sky-soft) 25%, 
-                var(--sage-soft) 50%, 
-                var(--peach-soft) 75%, 
-                var(--lavender-soft) 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
+                #667eea 0%, 
+                #764ba2 15%,
+                #f093fb 30%,
+                #f5576c 45%,
+                #4facfe 60%,
+                #00f2fe 75%,
+                #43e97b 90%,
+                #667eea 100%);
+            background-size: 600% 600%;
+            animation: gradientShift 25s ease infinite;
+            opacity: 0.4;
+        }
+
+        .calm-gradient::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(168, 139, 250, 0.3) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(74, 222, 200, 0.3) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 50%, rgba(251, 191, 208, 0.2) 0%, transparent 60%);
+            animation: auroraShift 15s ease-in-out infinite alternate;
         }
 
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
             50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+        }
+
+        @keyframes auroraShift {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
         }
 
         .calm-content {
@@ -615,25 +731,37 @@
         }
 
         .breathing-circle {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(230, 223, 245, 0.9) 50%,
+                rgba(216, 240, 227, 0.9) 100%);
+            backdrop-filter: blur(20px);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 4s ease-in-out;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.25),
+                        0 0 80px rgba(155, 127, 212, 0.15),
+                        inset 0 0 30px rgba(255, 255, 255, 0.5);
+            transition: transform 4s ease-in-out, box-shadow 4s ease-in-out;
+            border: 2px solid rgba(255, 255, 255, 0.6);
         }
 
         .breathing-circle.inhale {
-            transform: scale(1.3);
+            transform: scale(1.35);
+            box-shadow: 0 25px 80px rgba(102, 126, 234, 0.35),
+                        0 0 100px rgba(155, 127, 212, 0.25),
+                        inset 0 0 40px rgba(255, 255, 255, 0.6);
         }
 
         .breathing-circle.hold {
-            transform: scale(1.3);
+            transform: scale(1.35);
+            box-shadow: 0 25px 80px rgba(74, 222, 200, 0.35),
+                        0 0 100px rgba(95, 168, 134, 0.25),
+                        inset 0 0 40px rgba(255, 255, 255, 0.6);
         }
 
         .breathing-circle.exhale {
@@ -642,21 +770,26 @@
 
         .breathing-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 500;
             color: var(--text-primary);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .breathing-instruction {
             font-size: 1.1rem;
-            color: var(--text-secondary);
+            color: var(--text-primary);
             margin-bottom: 1rem;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
         }
 
         .breathing-timer {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 300;
-            color: var(--text-primary);
+            color: var(--lavender-rich);
             margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
         }
 
         .calm-controls {
@@ -670,23 +803,47 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 0.75rem 1.25rem;
-            background: rgba(255, 255, 255, 0.8);
+            padding: 0.875rem 1.5rem;
+            background: rgba(255, 255, 255, 0.85);
             border-radius: var(--radius-sm);
             cursor: pointer;
             transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .sound-toggle:hover {
             background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
         }
 
         .sound-toggle.active {
-            background: var(--sage-soft);
+            background: linear-gradient(135deg, var(--teal-soft) 0%, var(--sage-soft) 100%);
+            border-color: var(--teal);
+            box-shadow: 0 4px 20px rgba(74, 179, 168, 0.3);
+        }
+
+        .sound-toggle[data-sound="rain"].active {
+            background: linear-gradient(135deg, var(--sky-soft) 0%, #c3e0f0 100%);
+            border-color: var(--sky);
+            box-shadow: 0 4px 20px rgba(93, 164, 199, 0.3);
+        }
+
+        .sound-toggle[data-sound="forest"].active {
+            background: linear-gradient(135deg, var(--sage-soft) 0%, #c8ecd7 100%);
+            border-color: var(--sage);
+            box-shadow: 0 4px 20px rgba(95, 168, 134, 0.3);
+        }
+
+        .sound-toggle[data-sound="waves"].active {
+            background: linear-gradient(135deg, var(--teal-soft) 0%, #b8ebe6 100%);
+            border-color: var(--teal);
+            box-shadow: 0 4px 20px rgba(74, 179, 168, 0.3);
         }
 
         .sound-icon {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
         }
 
         .sound-label {
