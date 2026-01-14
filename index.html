@@ -12,6 +12,7 @@
             --bg-primary: #faf8ff;
             --bg-secondary: #ffffff;
             --bg-accent: #f3f0fa;
+            --bg-card: #ffffff;
             --text-primary: #2d3748;
             --text-secondary: #4a5568;
             --text-muted: #8b93a7;
@@ -39,6 +40,30 @@
             --radius: 20px;
             --radius-sm: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --input-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] {
+            --bg-primary: #1a1625;
+            --bg-secondary: #241f31;
+            --bg-accent: #2d2640;
+            --bg-card: #2d2640;
+            --text-primary: #e8e4f0;
+            --text-secondary: #b8b0c8;
+            --text-muted: #8b839c;
+            --lavender-soft: #3d3354;
+            --sage-soft: #2a3d32;
+            --sky-soft: #2a3540;
+            --peach-soft: #3d3230;
+            --rose-soft: #3d2d35;
+            --gold-soft: #3d3525;
+            --teal-soft: #253d3a;
+            --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 4px 30px rgba(0, 0, 0, 0.4);
+            --input-bg: #2d2640;
+            --border-color: #3d3354;
         }
 
         * {
@@ -278,11 +303,12 @@
         textarea, input[type="text"] {
             width: 100%;
             padding: 1rem;
-            border: 2px solid var(--bg-accent);
+            border: 2px solid var(--border-color);
             border-radius: var(--radius-sm);
             font-family: inherit;
             font-size: 1rem;
             color: var(--text-primary);
+            background: var(--input-bg);
             resize: vertical;
             transition: var(--transition);
         }
@@ -950,6 +976,462 @@
             margin-bottom: 1rem;
             opacity: 0.5;
         }
+
+        /* ==================== DARK MODE TOGGLE ==================== */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-accent);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--lavender-soft);
+        }
+
+        .theme-toggle-icon {
+            font-size: 1.25rem;
+        }
+
+        .theme-toggle-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ==================== GREETING HEADER ==================== */
+        .greeting-header {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--lavender-soft) 0%, var(--sky-soft) 100%);
+            border-radius: var(--radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        [data-theme="dark"] .greeting-header {
+            background: linear-gradient(135deg, rgba(155, 127, 212, 0.2) 0%, rgba(93, 164, 199, 0.2) 100%);
+        }
+
+        .greeting-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .greeting-text p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .streak-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--gold-soft);
+            border-radius: 20px;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .streak-badge.active {
+            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            color: #5c4a00;
+            box-shadow: 0 4px 15px rgba(255, 170, 0, 0.3);
+        }
+
+        /* ==================== DAILY INTENTION ==================== */
+        .intention-card {
+            background: linear-gradient(135deg, var(--sage-soft) 0%, var(--teal-soft) 100%);
+            border: none;
+        }
+
+        [data-theme="dark"] .intention-card {
+            background: linear-gradient(135deg, rgba(95, 168, 134, 0.2) 0%, rgba(74, 179, 168, 0.2) 100%);
+        }
+
+        .intention-display {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--sage-rich);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        [data-theme="dark"] .intention-display {
+            color: var(--sage);
+        }
+
+        .intention-input-wrapper {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* ==================== MOOD NOTES ==================== */
+        .mood-note-input {
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .mood-note-input.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .mood-note-textarea {
+            min-height: 80px;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ==================== SEARCH BAR ==================== */
+        .search-bar {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-bar input {
+            padding-left: 2.5rem;
+        }
+
+        .search-bar-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* ==================== GRATITUDE PROMPTS ==================== */
+        .prompts-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-chip {
+            padding: 0.4rem 0.875rem;
+            background: var(--bg-accent);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .prompt-chip:hover {
+            background: var(--lavender-soft);
+            border-color: var(--lavender);
+            color: var(--lavender-rich);
+        }
+
+        /* ==================== STATS DASHBOARD ==================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-accent);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--lavender-rich);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-card.sage .stat-value { color: var(--sage-rich); }
+        .stat-card.sky .stat-value { color: var(--sky-rich); }
+        .stat-card.gold .stat-value { color: var(--gold); }
+        .stat-card.rose .stat-value { color: var(--rose); }
+
+        /* ==================== BREATHING PATTERNS ==================== */
+        .breathing-patterns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .pattern-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pattern-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .pattern-btn.active {
+            background: var(--lavender-soft);
+            border-color: var(--lavender);
+            color: var(--lavender-rich);
+        }
+
+        /* ==================== MEDITATION TIMER ==================== */
+        .meditation-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .meditation-times {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .meditation-time-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .meditation-time-btn.active {
+            background: var(--sage-soft);
+            color: var(--sage-rich);
+        }
+
+        .meditation-display {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            text-align: center;
+            margin: 1rem 0;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        /* ==================== CUSTOM AFFIRMATIONS ==================== */
+        .custom-affirmations {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .affirmation-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .affirmation-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background: var(--bg-accent);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.5rem;
+        }
+
+        .affirmation-item-text {
+            flex: 1;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .affirmation-item-delete {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .affirmation-item:hover .affirmation-item-delete {
+            opacity: 1;
+        }
+
+        /* ==================== WEEKLY REFLECTION ==================== */
+        .reflection-prompt {
+            background: linear-gradient(135deg, var(--lavender-soft) 0%, var(--rose-soft) 100%);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        [data-theme="dark"] .reflection-prompt {
+            background: linear-gradient(135deg, rgba(155, 127, 212, 0.2) 0%, rgba(214, 122, 143, 0.2) 100%);
+        }
+
+        .reflection-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--lavender-rich);
+            margin-bottom: 1rem;
+        }
+
+        [data-theme="dark"] .reflection-question {
+            color: var(--lavender);
+        }
+
+        /* ==================== ONBOARDING MODAL ==================== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            max-width: 500px;
+            width: 100%;
+            padding: 2.5rem;
+            text-align: center;
+            animation: modalIn 0.4s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-text {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* ==================== CONFETTI ==================== */
+        .confetti-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ==================== EXPORT BUTTON ==================== */
+        .export-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-accent);
+            border: none;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .export-btn:hover {
+            background: var(--lavender-soft);
+            color: var(--lavender-rich);
+        }
+
+        /* ==================== KEYBOARD SHORTCUTS HINT ==================== */
+        .shortcuts-hint {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-soft);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 50;
+        }
+
+        .kbd {
+            padding: 0.2rem 0.4rem;
+            background: var(--bg-accent);
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 768px) {
+            .shortcuts-hint { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .greeting-header { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -965,9 +1447,20 @@
             <h1 class="logo">Serenity</h1>
             <p class="logo-subtitle">Wellness Dashboard</p>
             
+            <div class="theme-toggle" onclick="toggleTheme()">
+                <span class="theme-toggle-icon" id="themeIcon">🌙</span>
+                <span class="theme-toggle-label" id="themeLabel">Dark Mode</span>
+            </div>
+            
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a class="nav-link active" data-section="gratitude">
+                    <a class="nav-link active" data-section="home">
+                        <span class="nav-icon">🏠</span>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-section="gratitude">
                         <span class="nav-icon">📝</span>
                         Gratitude Journal
                     </a>
@@ -1006,8 +1499,61 @@
 
         <!-- Main Content -->
         <main class="main-content">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="greeting-header">
+                    <div class="greeting-text">
+                        <h2 id="greetingText">Good morning!</h2>
+                        <p>Let's make today meaningful.</p>
+                    </div>
+                    <div class="streak-badge" id="streakBadge">
+                        🔥 <span id="streakCount">0</span> day streak
+                    </div>
+                </div>
+
+                <div class="card intention-card">
+                    <p class="card-title">Today's Intention</p>
+                    <div id="intentionDisplay" class="intention-display" style="display: none;"></div>
+                    <div id="intentionForm">
+                        <div class="intention-input-wrapper">
+                            <input type="text" id="intentionInput" placeholder="What's your focus for today?">
+                            <button class="btn btn-primary" onclick="saveIntention()">Set</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-title">Your Wellness Stats</p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="statGratitude">0</div>
+                            <div class="stat-label">Gratitude Entries</div>
+                        </div>
+                        <div class="stat-card sage">
+                            <div class="stat-value" id="statMoods">0</div>
+                            <div class="stat-label">Moods Logged</div>
+                        </div>
+                        <div class="stat-card sky">
+                            <div class="stat-value" id="statWins">0</div>
+                            <div class="stat-label">Wins Completed</div>
+                        </div>
+                        <div class="stat-card gold">
+                            <div class="stat-value" id="statStreak">0</div>
+                            <div class="stat-label">Day Streak</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card reflection-prompt" id="weeklyReflection" style="display: none;">
+                    <p class="card-title">Weekly Reflection</p>
+                    <p class="reflection-question" id="reflectionQuestion"></p>
+                    <textarea id="reflectionInput" placeholder="Take a moment to reflect..."></textarea>
+                    <button class="btn btn-primary" onclick="saveReflection()" style="margin-top: 1rem;">Save Reflection</button>
+                </div>
+            </section>
+
             <!-- Gratitude Journal Section -->
-            <section id="gratitude" class="section active">
+            <section id="gratitude" class="section">
                 <div class="section-header">
                     <h2 class="section-title">Gratitude Journal</h2>
                     <p class="section-subtitle">Take a moment to appreciate the little things</p>
@@ -1015,14 +1561,28 @@
 
                 <div class="card">
                     <p class="card-title">What are you grateful for today?</p>
+                    <div class="prompts-container">
+                        <span class="prompt-chip" onclick="usePrompt('Someone who made me smile today...')">Someone who made me smile</span>
+                        <span class="prompt-chip" onclick="usePrompt('A small comfort I enjoyed...')">A small comfort</span>
+                        <span class="prompt-chip" onclick="usePrompt('Something I\'m looking forward to...')">Looking forward to</span>
+                        <span class="prompt-chip" onclick="usePrompt('A lesson I learned recently...')">A lesson learned</span>
+                        <span class="prompt-chip" onclick="usePrompt('Something beautiful I noticed...')">Something beautiful</span>
+                    </div>
                     <textarea class="gratitude-input" id="gratitudeInput" placeholder="Today I'm grateful for..."></textarea>
-                    <button class="btn btn-primary" onclick="saveGratitude()">
-                        Save Entry
-                    </button>
+                    <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                        <button class="btn btn-primary" onclick="saveGratitude()">Save Entry</button>
+                        <button class="export-btn" onclick="exportGratitude()">📥 Export Journal</button>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <p class="card-title">Past Reflections</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                        <p class="card-title" style="margin: 0;">Past Reflections</p>
+                    </div>
+                    <div class="search-bar">
+                        <span class="search-bar-icon">🔍</span>
+                        <input type="text" id="gratitudeSearch" placeholder="Search entries..." oninput="filterGratitude()">
+                    </div>
                     <div class="gratitude-entries" id="gratitudeEntries">
                         <!-- Entries will be loaded here -->
                     </div>
@@ -1044,6 +1604,10 @@
                         <button class="mood-btn" data-mood="okay" title="Okay">😐</button>
                         <button class="mood-btn" data-mood="low" title="Low">😔</button>
                         <button class="mood-btn" data-mood="rough" title="Rough">😢</button>
+                    </div>
+                    <div class="mood-note-input" id="moodNoteInput">
+                        <textarea class="mood-note-textarea" id="moodNoteText" placeholder="What's on your mind? (optional)"></textarea>
+                        <button class="btn btn-secondary" onclick="saveMoodNote()">Add Note</button>
                     </div>
                 </div>
 
@@ -1072,6 +1636,17 @@
                     <button class="btn btn-primary" onclick="newAffirmation()">
                         ✨ New Affirmation
                     </button>
+                </div>
+
+                <div class="card">
+                    <p class="card-title">Add Your Own Affirmations</p>
+                    <div class="intention-input-wrapper" style="margin-bottom: 1rem;">
+                        <input type="text" id="customAffirmationInput" placeholder="Write your personal affirmation...">
+                        <button class="btn btn-primary" onclick="addCustomAffirmation()">Add</button>
+                    </div>
+                    <div class="affirmation-list" id="customAffirmationsList">
+                        <!-- Custom affirmations will appear here -->
+                    </div>
                 </div>
             </section>
 
@@ -1112,6 +1687,14 @@
                     <div class="calm-gradient"></div>
                     <div class="calm-content">
                         <div class="breathing-container">
+                            <p class="card-title" style="color: var(--text-primary); margin-bottom: 1rem;">Breathing Pattern</p>
+                            <div class="breathing-patterns">
+                                <button class="pattern-btn active" data-pattern="relaxing" onclick="setBreathingPattern('relaxing')">Relaxing (4-4-4)</button>
+                                <button class="pattern-btn" data-pattern="calming" onclick="setBreathingPattern('calming')">4-7-8 Calm</button>
+                                <button class="pattern-btn" data-pattern="energizing" onclick="setBreathingPattern('energizing')">Energizing</button>
+                                <button class="pattern-btn" data-pattern="box" onclick="setBreathingPattern('box')">Box (4-4-4-4)</button>
+                            </div>
+                            
                             <div class="breathing-circle" id="breathingCircle">
                                 <span class="breathing-text" id="breathingText">Ready</span>
                             </div>
@@ -1140,10 +1723,45 @@
                                 <span class="sound-label">Calm Music</span>
                             </div>
                         </div>
+
+                        <div class="meditation-section">
+                            <p class="card-title" style="color: var(--text-primary); margin-bottom: 1rem; text-align: center;">Meditation Timer</p>
+                            <div class="meditation-times">
+                                <button class="meditation-time-btn active" data-minutes="3" onclick="setMeditationTime(3)">3 min</button>
+                                <button class="meditation-time-btn" data-minutes="5" onclick="setMeditationTime(5)">5 min</button>
+                                <button class="meditation-time-btn" data-minutes="10" onclick="setMeditationTime(10)">10 min</button>
+                                <button class="meditation-time-btn" data-minutes="15" onclick="setMeditationTime(15)">15 min</button>
+                            </div>
+                            <p class="meditation-display" id="meditationDisplay">3:00</p>
+                            <button class="btn btn-primary" id="meditationBtn" onclick="toggleMeditation()">
+                                Start Meditation
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
+    </div>
+
+    <!-- Onboarding Modal -->
+    <div class="modal-overlay" id="onboardingModal">
+        <div class="modal">
+            <div class="modal-icon">🌿</div>
+            <h2 class="modal-title">Welcome to Serenity</h2>
+            <p class="modal-text">
+                Your personal wellness dashboard for practicing gratitude, tracking moods, and finding moments of calm. 
+                Everything is saved locally on your device—your space, your pace.
+            </p>
+            <button class="btn btn-primary" onclick="closeOnboarding()">Begin Your Journey</button>
+        </div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- Keyboard Shortcuts Hint -->
+    <div class="shortcuts-hint">
+        <span class="kbd">?</span> Keyboard shortcuts
     </div>
 
     <!-- Audio elements for ambient sounds -->
@@ -1163,12 +1781,52 @@
     <script>
         // ==================== STATE MANAGEMENT ====================
         const state = {
-            currentSection: 'gratitude',
+            currentSection: 'home',
             moodViewDate: new Date(),
             breathingActive: false,
             breathingInterval: null,
-            currentSound: null
+            currentSound: null,
+            breathingPattern: 'relaxing',
+            meditationMinutes: 3,
+            meditationActive: false,
+            meditationInterval: null,
+            meditationSeconds: 180
         };
+
+        // ==================== BREATHING PATTERNS ====================
+        const breathingPatterns = {
+            relaxing: [
+                { name: 'Inhale', duration: 4, class: 'inhale' },
+                { name: 'Hold', duration: 4, class: 'hold' },
+                { name: 'Exhale', duration: 4, class: 'exhale' }
+            ],
+            calming: [
+                { name: 'Inhale', duration: 4, class: 'inhale' },
+                { name: 'Hold', duration: 7, class: 'hold' },
+                { name: 'Exhale', duration: 8, class: 'exhale' }
+            ],
+            energizing: [
+                { name: 'Inhale', duration: 2, class: 'inhale' },
+                { name: 'Exhale', duration: 2, class: 'exhale' }
+            ],
+            box: [
+                { name: 'Inhale', duration: 4, class: 'inhale' },
+                { name: 'Hold', duration: 4, class: 'hold' },
+                { name: 'Exhale', duration: 4, class: 'exhale' },
+                { name: 'Hold', duration: 4, class: 'hold' }
+            ]
+        };
+
+        // ==================== WEEKLY REFLECTION QUESTIONS ====================
+        const reflectionQuestions = [
+            "What brought you the most joy this week?",
+            "What's one thing you learned about yourself?",
+            "What are you most proud of accomplishing?",
+            "Who made a positive impact on your week?",
+            "What would you do differently next week?",
+            "What are you grateful for from this past week?",
+            "What moment would you like to relive?"
+        ];
 
         // ==================== AFFIRMATIONS DATA ====================
         const affirmations = [
@@ -1231,6 +1889,421 @@
             });
         }
 
+        // ==================== THEME TOGGLE ====================
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(newTheme);
+        }
+
+        function updateThemeUI(theme) {
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+            
+            if (theme === 'dark') {
+                icon.textContent = '☀️';
+                label.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                label.textContent = 'Dark Mode';
+            }
+        }
+
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeUI(savedTheme);
+        }
+
+        // ==================== GREETING ====================
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const greetingEl = document.getElementById('greetingText');
+            let greeting = 'Good evening!';
+            
+            if (hour < 12) greeting = 'Good morning!';
+            else if (hour < 17) greeting = 'Good afternoon!';
+            
+            greetingEl.textContent = greeting;
+        }
+
+        // ==================== STREAK TRACKER ====================
+        function calculateStreak() {
+            const entries = JSON.parse(localStorage.getItem('gratitudeEntries') || '[]');
+            const moods = JSON.parse(localStorage.getItem('moods') || '{}');
+            
+            // Get all unique dates with activity
+            const activityDates = new Set();
+            entries.forEach(e => activityDates.add(e.date.split('T')[0]));
+            Object.keys(moods).forEach(d => activityDates.add(d));
+            
+            // Calculate streak from today backwards
+            let streak = 0;
+            let checkDate = new Date();
+            
+            while (true) {
+                const dateStr = checkDate.toISOString().split('T')[0];
+                if (activityDates.has(dateStr)) {
+                    streak++;
+                    checkDate.setDate(checkDate.getDate() - 1);
+                } else if (streak === 0) {
+                    // Check if today just hasn't had activity yet
+                    checkDate.setDate(checkDate.getDate() - 1);
+                    continue;
+                } else {
+                    break;
+                }
+                if (streak > 365) break; // Safety limit
+            }
+            
+            return streak;
+        }
+
+        function updateStreak() {
+            const streak = calculateStreak();
+            document.getElementById('streakCount').textContent = streak;
+            document.getElementById('statStreak').textContent = streak;
+            
+            const badge = document.getElementById('streakBadge');
+            if (streak >= 7) {
+                badge.classList.add('active');
+            } else {
+                badge.classList.remove('active');
+            }
+            
+            // Confetti for milestone streaks
+            if (streak > 0 && streak % 7 === 0) {
+                const lastCelebrated = localStorage.getItem('lastStreakCelebration');
+                if (lastCelebrated !== streak.toString()) {
+                    triggerConfetti();
+                    localStorage.setItem('lastStreakCelebration', streak.toString());
+                }
+            }
+        }
+
+        // ==================== STATS ====================
+        function updateStats() {
+            const entries = JSON.parse(localStorage.getItem('gratitudeEntries') || '[]');
+            const moods = JSON.parse(localStorage.getItem('moods') || '{}');
+            const winsData = JSON.parse(localStorage.getItem('winsData') || '{}');
+            
+            document.getElementById('statGratitude').textContent = entries.length;
+            document.getElementById('statMoods').textContent = Object.keys(moods).length;
+            
+            // Count completed wins
+            let totalWins = 0;
+            if (winsData.history) {
+                winsData.history.forEach(day => totalWins += day.wins.length);
+            }
+            if (winsData.todayWins) {
+                totalWins += winsData.todayWins.filter(w => w.completed).length;
+            }
+            document.getElementById('statWins').textContent = totalWins;
+        }
+
+        // ==================== DAILY INTENTION ====================
+        function loadIntention() {
+            const today = getToday();
+            const intentions = JSON.parse(localStorage.getItem('intentions') || '{}');
+            
+            if (intentions[today]) {
+                document.getElementById('intentionDisplay').textContent = `"${intentions[today]}"`;
+                document.getElementById('intentionDisplay').style.display = 'block';
+                document.getElementById('intentionForm').style.display = 'none';
+            } else {
+                document.getElementById('intentionDisplay').style.display = 'none';
+                document.getElementById('intentionForm').style.display = 'block';
+            }
+        }
+
+        function saveIntention() {
+            const input = document.getElementById('intentionInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            const today = getToday();
+            const intentions = JSON.parse(localStorage.getItem('intentions') || '{}');
+            intentions[today] = text;
+            localStorage.setItem('intentions', JSON.stringify(intentions));
+            
+            input.value = '';
+            loadIntention();
+        }
+
+        // ==================== WEEKLY REFLECTION ====================
+        function checkWeeklyReflection() {
+            const today = new Date();
+            if (today.getDay() === 0) { // Sunday
+                const lastReflection = localStorage.getItem('lastReflection');
+                const thisWeek = getToday();
+                
+                if (lastReflection !== thisWeek) {
+                    const question = reflectionQuestions[Math.floor(Math.random() * reflectionQuestions.length)];
+                    document.getElementById('reflectionQuestion').textContent = question;
+                    document.getElementById('weeklyReflection').style.display = 'block';
+                }
+            }
+        }
+
+        function saveReflection() {
+            const input = document.getElementById('reflectionInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            const reflections = JSON.parse(localStorage.getItem('reflections') || '[]');
+            reflections.unshift({
+                date: new Date().toISOString(),
+                question: document.getElementById('reflectionQuestion').textContent,
+                answer: text
+            });
+            localStorage.setItem('reflections', JSON.stringify(reflections));
+            localStorage.setItem('lastReflection', getToday());
+            
+            input.value = '';
+            document.getElementById('weeklyReflection').style.display = 'none';
+        }
+
+        // ==================== GRATITUDE PROMPTS ====================
+        function usePrompt(prompt) {
+            document.getElementById('gratitudeInput').value = prompt;
+            document.getElementById('gratitudeInput').focus();
+        }
+
+        // ==================== GRATITUDE SEARCH ====================
+        function filterGratitude() {
+            const search = document.getElementById('gratitudeSearch').value.toLowerCase();
+            const entries = JSON.parse(localStorage.getItem('gratitudeEntries') || '[]');
+            const filtered = search ? entries.filter(e => e.text.toLowerCase().includes(search)) : entries;
+            renderGratitudeEntries(filtered);
+        }
+
+        function renderGratitudeEntries(entries) {
+            const container = document.getElementById('gratitudeEntries');
+            
+            if (entries.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📝</div>
+                        <p>No entries found.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = entries.map(entry => `
+                <div class="gratitude-entry">
+                    <p class="gratitude-entry-date">${formatDate(entry.date)} at ${formatTime(entry.date)}</p>
+                    <p class="gratitude-entry-text">${entry.text}</p>
+                </div>
+            `).join('');
+        }
+
+        // ==================== EXPORT GRATITUDE ====================
+        function exportGratitude() {
+            const entries = JSON.parse(localStorage.getItem('gratitudeEntries') || '[]');
+            if (entries.length === 0) {
+                alert('No entries to export yet!');
+                return;
+            }
+            
+            let text = "🌿 My Gratitude Journal\n";
+            text += "========================\n\n";
+            
+            entries.forEach(entry => {
+                text += `${formatDate(entry.date)} at ${formatTime(entry.date)}\n`;
+                text += `${entry.text}\n\n`;
+                text += "---\n\n";
+            });
+            
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'gratitude-journal.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // ==================== CUSTOM AFFIRMATIONS ====================
+        function loadCustomAffirmations() {
+            const custom = JSON.parse(localStorage.getItem('customAffirmations') || '[]');
+            const container = document.getElementById('customAffirmationsList');
+            
+            if (custom.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 1rem;">Add your personal affirmations above!</p>';
+                return;
+            }
+            
+            container.innerHTML = custom.map((aff, i) => `
+                <div class="affirmation-item">
+                    <span class="affirmation-item-text">"${aff}"</span>
+                    <button class="affirmation-item-delete" onclick="deleteCustomAffirmation(${i})">×</button>
+                </div>
+            `).join('');
+        }
+
+        function addCustomAffirmation() {
+            const input = document.getElementById('customAffirmationInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            const custom = JSON.parse(localStorage.getItem('customAffirmations') || '[]');
+            custom.push(text);
+            localStorage.setItem('customAffirmations', JSON.stringify(custom));
+            
+            input.value = '';
+            loadCustomAffirmations();
+        }
+
+        function deleteCustomAffirmation(index) {
+            const custom = JSON.parse(localStorage.getItem('customAffirmations') || '[]');
+            custom.splice(index, 1);
+            localStorage.setItem('customAffirmations', JSON.stringify(custom));
+            loadCustomAffirmations();
+        }
+
+        function getAllAffirmations() {
+            const custom = JSON.parse(localStorage.getItem('customAffirmations') || '[]');
+            return [...affirmations, ...custom];
+        }
+
+        // ==================== MOOD NOTES ====================
+        function showMoodNote() {
+            document.getElementById('moodNoteInput').classList.add('visible');
+        }
+
+        function saveMoodNote() {
+            const text = document.getElementById('moodNoteText').value.trim();
+            if (!text) return;
+            
+            const today = getToday();
+            const moodNotes = JSON.parse(localStorage.getItem('moodNotes') || '{}');
+            moodNotes[today] = text;
+            localStorage.setItem('moodNotes', JSON.stringify(moodNotes));
+            
+            document.getElementById('moodNoteText').value = '';
+            document.getElementById('moodNoteInput').classList.remove('visible');
+        }
+
+        // ==================== BREATHING PATTERNS ====================
+        function setBreathingPattern(pattern) {
+            state.breathingPattern = pattern;
+            document.querySelectorAll('.pattern-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.pattern === pattern);
+            });
+            
+            if (state.breathingActive) {
+                stopBreathing();
+                startBreathing();
+            }
+        }
+
+        // ==================== MEDITATION TIMER ====================
+        function setMeditationTime(minutes) {
+            state.meditationMinutes = minutes;
+            state.meditationSeconds = minutes * 60;
+            updateMeditationDisplay();
+            
+            document.querySelectorAll('.meditation-time-btn').forEach(btn => {
+                btn.classList.toggle('active', parseInt(btn.dataset.minutes) === minutes);
+            });
+        }
+
+        function updateMeditationDisplay() {
+            const mins = Math.floor(state.meditationSeconds / 60);
+            const secs = state.meditationSeconds % 60;
+            document.getElementById('meditationDisplay').textContent = 
+                `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function toggleMeditation() {
+            if (state.meditationActive) {
+                stopMeditation();
+            } else {
+                startMeditation();
+            }
+        }
+
+        function startMeditation() {
+            state.meditationActive = true;
+            document.getElementById('meditationBtn').textContent = 'Stop Meditation';
+            
+            state.meditationInterval = setInterval(() => {
+                state.meditationSeconds--;
+                updateMeditationDisplay();
+                
+                if (state.meditationSeconds <= 0) {
+                    stopMeditation();
+                    // Play a gentle bell sound or notification
+                    triggerConfetti();
+                }
+            }, 1000);
+        }
+
+        function stopMeditation() {
+            state.meditationActive = false;
+            clearInterval(state.meditationInterval);
+            document.getElementById('meditationBtn').textContent = 'Start Meditation';
+            state.meditationSeconds = state.meditationMinutes * 60;
+            updateMeditationDisplay();
+        }
+
+        // ==================== ONBOARDING ====================
+        function checkOnboarding() {
+            const hasVisited = localStorage.getItem('hasVisited');
+            if (!hasVisited) {
+                document.getElementById('onboardingModal').classList.add('active');
+            }
+        }
+
+        function closeOnboarding() {
+            localStorage.setItem('hasVisited', 'true');
+            document.getElementById('onboardingModal').classList.remove('active');
+        }
+
+        // ==================== CONFETTI ====================
+        function triggerConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#9b7fd4', '#5fa886', '#5da4c7', '#e89b7b', '#d67a8f', '#d4a85a', '#4ab3a8'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                container.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3500);
+            }
+        }
+
+        // ==================== KEYBOARD SHORTCUTS ====================
+        function initKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Ignore if typing in input
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                
+                switch(e.key) {
+                    case '1': switchSection('home'); break;
+                    case '2': switchSection('gratitude'); break;
+                    case '3': switchSection('mood'); break;
+                    case '4': switchSection('affirmations'); break;
+                    case '5': switchSection('wins'); break;
+                    case '6': switchSection('calm'); break;
+                    case 'd': toggleTheme(); break;
+                    case '?':
+                        alert('Keyboard Shortcuts:\n\n1 - Home\n2 - Gratitude\n3 - Mood\n4 - Affirmations\n5 - Wins\n6 - Calm Space\nD - Toggle Dark Mode');
+                        break;
+                }
+            });
+        }
+
         // ==================== NAVIGATION ====================
         function initNavigation() {
             const navLinks = document.querySelectorAll('.nav-link');
@@ -1279,24 +2352,7 @@
         // ==================== GRATITUDE JOURNAL ====================
         function loadGratitudeEntries() {
             const entries = JSON.parse(localStorage.getItem('gratitudeEntries') || '[]');
-            const container = document.getElementById('gratitudeEntries');
-
-            if (entries.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📝</div>
-                        <p>No entries yet. Start your gratitude journey today!</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = entries.map(entry => `
-                <div class="gratitude-entry">
-                    <p class="gratitude-entry-date">${formatDate(entry.date)} at ${formatTime(entry.date)}</p>
-                    <p class="gratitude-entry-text">${entry.text}</p>
-                </div>
-            `).join('');
+            renderGratitudeEntries(entries);
         }
 
         function saveGratitude() {
@@ -1315,6 +2371,9 @@
             localStorage.setItem('gratitudeEntries', JSON.stringify(entries));
             input.value = '';
             loadGratitudeEntries();
+            updateStreak();
+            updateStats();
+            celebrate();
         }
 
         // ==================== MOOD TRACKER ====================
@@ -1349,6 +2408,9 @@
             moods[today] = mood;
             localStorage.setItem('moods', JSON.stringify(moods));
             renderMoodCalendar();
+            showMoodNote();
+            updateStreak();
+            updateStats();
         }
 
         function renderMoodCalendar() {
@@ -1409,8 +2471,9 @@
         // ==================== DAILY AFFIRMATIONS ====================
         function newAffirmation() {
             const text = document.getElementById('affirmationText');
-            const randomIndex = Math.floor(Math.random() * affirmations.length);
-            text.textContent = `"${affirmations[randomIndex]}"`;
+            const allAffirmations = getAllAffirmations();
+            const randomIndex = Math.floor(Math.random() * allAffirmations.length);
+            text.textContent = `"${allAffirmations[randomIndex]}"`;
             text.style.opacity = 0;
             setTimeout(() => {
                 text.style.transition = 'opacity 0.5s ease';
@@ -1479,10 +2542,17 @@
                 win.completed = !win.completed;
                 localStorage.setItem('winsData', JSON.stringify(winsData));
                 renderWins();
+                updateStats();
 
                 // Celebration animation
                 if (win.completed) {
                     celebrate();
+                    
+                    // Check if all wins completed
+                    const allCompleted = winsData.todayWins.every(w => w.completed);
+                    if (allCompleted && winsData.todayWins.length > 0) {
+                        setTimeout(() => triggerConfetti(), 500);
+                    }
                 }
             }
         }
@@ -1569,11 +2639,7 @@
             state.breathingActive = true;
             document.getElementById('breathingBtn').textContent = 'Stop';
 
-            const phases = [
-                { name: 'Inhale', duration: 4, class: 'inhale' },
-                { name: 'Hold', duration: 4, class: 'hold' },
-                { name: 'Exhale', duration: 4, class: 'exhale' }
-            ];
+            const phases = breathingPatterns[state.breathingPattern];
 
             let phaseIndex = 0;
             let countdown = phases[0].duration;
@@ -1655,17 +2721,58 @@
 
         // ==================== INITIALIZATION ====================
         document.addEventListener('DOMContentLoaded', () => {
+            // Load saved theme
+            loadTheme();
+            
+            // Update date and greeting
             updateDateDisplay();
+            updateGreeting();
+            
+            // Initialize navigation
             initNavigation();
+            
+            // Load all data
             loadGratitudeEntries();
             initMoodTracker();
             newAffirmation();
             initWins();
+            loadIntention();
+            loadCustomAffirmations();
+            
+            // Update stats and streak
+            updateStats();
+            updateStreak();
+            
+            // Check for weekly reflection (Sundays)
+            checkWeeklyReflection();
+            
+            // Initialize meditation display
+            updateMeditationDisplay();
+            
+            // Check if first visit
+            checkOnboarding();
+            
+            // Setup keyboard shortcuts
+            initKeyboardShortcuts();
 
             // Enter key for gratitude
             document.getElementById('gratitudeInput').addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' && e.ctrlKey) {
                     saveGratitude();
+                }
+            });
+            
+            // Enter key for intention
+            document.getElementById('intentionInput').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    saveIntention();
+                }
+            });
+            
+            // Enter key for custom affirmation
+            document.getElementById('customAffirmationInput').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    addCustomAffirmation();
                 }
             });
         });
