@@ -842,6 +842,12 @@
             box-shadow: 0 4px 20px rgba(74, 179, 168, 0.3);
         }
 
+        .sound-toggle[data-sound="music"].active {
+            background: linear-gradient(135deg, var(--lavender-soft) 0%, var(--rose-soft) 100%);
+            border-color: var(--lavender);
+            box-shadow: 0 4px 20px rgba(155, 127, 212, 0.3);
+        }
+
         .sound-icon {
             font-size: 1.4rem;
         }
@@ -1129,6 +1135,10 @@
                                 <span class="sound-icon">🌊</span>
                                 <span class="sound-label">Ocean Waves</span>
                             </div>
+                            <div class="sound-toggle" data-sound="music" onclick="toggleSound('music')">
+                                <span class="sound-icon">🎵</span>
+                                <span class="sound-label">Calm Music</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1145,6 +1155,9 @@
     </audio>
     <audio id="wavesSound" loop>
         <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_ea70ad08e3.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="musicSound" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -1605,7 +1618,8 @@
             const soundMap = {
                 rain: document.getElementById('rainSound'),
                 forest: document.getElementById('forestSound'),
-                waves: document.getElementById('wavesSound')
+                waves: document.getElementById('wavesSound'),
+                music: document.getElementById('musicSound')
             };
 
             const toggles = document.querySelectorAll('.sound-toggle');
